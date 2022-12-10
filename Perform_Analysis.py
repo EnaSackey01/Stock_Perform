@@ -1,5 +1,6 @@
 import csv
 import statistics 
+import matplotlib.pyplot as plt
 
 ADBE_Data = []
 with open ("ADBE.csv", "r") as infile:
@@ -14,11 +15,11 @@ l = 0
 ADBE_std_Data = []
 while l < len(ADBE_Data):
     try:
-        day1 = float(ADBE_Data[l]["Closing_Price"])
-        day2 = float(ADBE_Data[l + 1]["Closing_Price"])
-        day3 = float(ADBE_Data[l + 2]["Closing_Price"])
-        day4 = float(ADBE_Data[l + 3]["Closing_Price"])
-        day5 = float(ADBE_Data[l + 4]["Closing_Price"])
+        day1 = float(ADBE_Data[l]["Closing"])
+        day2 = float(ADBE_Data[l + 1]["Closing"])
+        day3 = float(ADBE_Data[l + 2]["Closing"])
+        day4 = float(ADBE_Data[l + 3]["Closing"])
+        day5 = float(ADBE_Data[l + 4]["Closing"])
 
         pop_stdev = statistics.pstdev([day1, day2, day3, day4, day5])
         ADBE_std_Data.append(pop_stdev)
@@ -41,11 +42,11 @@ r = 0
 GOOGL_std_Data = []
 while r < len(GOOGL_Data):
     try:
-        day1 = float(GOOGL_Data[r]["Closing_Price"])
-        day2 = float(GOOGL_Data[r + 1]["Closing_Price"])
-        day3 = float(GOOGL_Data[r + 2]["Closing_Price"])
-        day4 = float(GOOGL_Data[r + 3]["Closing_Price"])
-        day5 = float(GOOGL_Data[r + 4]["Closing_Price"])
+        day1 = float(GOOGL_Data[r]["Closing"])
+        day2 = float(GOOGL_Data[r + 1]["Closing"])
+        day3 = float(GOOGL_Data[r + 2]["Closing"])
+        day4 = float(GOOGL_Data[r + 3]["Closing"])
+        day5 = float(GOOGL_Data[r + 4]["Closing"])
 
         pop_stdev2 = statistics.pstdev([day1, day2, day3, day4, day5])
         GOOGL_std_Data.append(pop_stdev2)
@@ -69,11 +70,11 @@ s = 0
 AMZN_std_Data = []
 while s < len(AMZN_Data):
     try:
-        day1 = float(AMZN_Data[s]["Closing_Price"])
-        day2 = float(AMZN_Data[s + 1]["Closing_Price"])
-        day3 = float(AMZN_Data[s + 2]["Closing_Price"])
-        day4 = float(AMZN_Data[s + 3]["Closing_Price"])
-        day5 = float(AMZN_Data[s + 4]["Closing_Price"])
+        day1 = float(AMZN_Data[s]["Closing"])
+        day2 = float(AMZN_Data[s + 1]["Closing"])
+        day3 = float(AMZN_Data[s + 2]["Closing"])
+        day4 = float(AMZN_Data[s + 3]["Closing"])
+        day5 = float(AMZN_Data[s + 4]["Closing"])
 
         pop_stdev3 = statistics.pstdev([day1, day2, day3, day4, day5])
         AMZN_std_Data.append(pop_stdev3)
@@ -96,11 +97,11 @@ p = 0
 CRM_std_Data = []
 while p < len(CRM_Data):
     try:
-        day1 = float(CRM_Data[p]["Closing_Price"])
-        day2 = float(CRM_Data[p + 1]["Closing_Price"])
-        day3 = float(CRM_Data[p + 2]["Closing_Price"])
-        day4 = float(CRM_Data[p + 3]["Closing_Price"])
-        day5 = float(CRM_Data[p + 4]["Closing_Price"])
+        day1 = float(CRM_Data[p]["Closing"])
+        day2 = float(CRM_Data[p + 1]["Closing"])
+        day3 = float(CRM_Data[p + 2]["Closing"])
+        day4 = float(CRM_Data[p + 3]["Closing"])
+        day5 = float(CRM_Data[p + 4]["Closing"])
 
         pop_stdev4 = statistics.pstdev([day1, day2, day3, day4, day5])
         CRM_std_Data.append(pop_stdev4)
@@ -124,11 +125,11 @@ v = 0
 COUR_std_Data = []
 while v < len(COUR_Data):
     try:
-        day1 = float(COUR_Data[v]["Closing_Price"])
-        day2 = float(COUR_Data[v + 1]["Closing_Price"])
-        day3 = float(COUR_Data[v + 2]["Closing_Price"])
-        day4 = float(COUR_Data[v + 3]["Closing_Price"])
-        day5 = float(COUR_Data[v + 4]["Closing_Price"])
+        day1 = float(COUR_Data[v]["Closing"])
+        day2 = float(COUR_Data[v + 1]["Closing"])
+        day3 = float(COUR_Data[v + 2]["Closing"])
+        day4 = float(COUR_Data[v + 3]["Closing"])
+        day5 = float(COUR_Data[v + 4]["Closing"])
 
         pop_stdev = statistics.pstdev([day1, day2, day3, day4, day5])
         COUR_std_Data.append(pop_stdev)
@@ -137,3 +138,58 @@ while v < len(COUR_Data):
         break
 
 print(COUR_std_Data)
+
+fig,S1 = plt.subplots()
+S1.plot(COUR_std_Data)
+S1.set_ylabel("Price's Standard Deviation")
+S1.set_xlabel("Number Of Weeks")
+S1.set_title("STANDARD DEVIATION OF COURSERA'S STOCK")
+plt.savefig("Coursera's Std_Dev.png")
+
+fig,S2 = plt.subplots()
+S2.plot(CRM_std_Data)
+S2.set_ylabel("Price's Standard Deviation")
+S2.set_xlabel("Number Of Weeks")
+S2.set_title("STANDARD DEVIATION OF SALESFORCE'S STOCK")
+plt.savefig("Salesforce's Std_Dev.png")
+
+fig,S3 = plt.subplots()
+S3.plot(AMZN_std_Data)
+S3.set_ylabel("Price's Standard Deviation")
+S3.set_xlabel("Number Of Weeks")
+S3.set_title("STANDARD DEVIATION OF AMAZONS' STOCK")
+plt.savefig("Amazon's Std_Dev.png")
+
+fig,S4 = plt.subplots()
+S4.plot(ADBE_std_Data)
+S4.set_ylabel("Price's Standard Deviation")
+S4.set_xlabel("Number Of Weeks")
+S4.set_title("STANDARD DEVIATION OF ADOBE'S STOCK")
+plt.savefig("Adobe's Std_Dev.png")
+
+fig,S5 = plt.subplots()
+S5.plot(GOOGL_std_Data)
+S5.set_ylabel("Price's Standard Deviation")
+S5.set_xlabel("Number Of Weeks")
+S5.set_title("STANDARD DEVIATION OF GOOGLE's STOCK")
+plt.savefig("Google's Std_Dev.png")
+
+#fig,(S1, S2, S3, S4, S5) = plt.subplots()
+#fig,ax= plt.subplots()
+#ax.plot(cvs_stdev)
+#ax.set_ylabel(“STDEV of price”)
+#ax.set_xlabel(“weeks since March29”)
+#ax.set_title(“STANDARD DEVIATION OF STOCKS”)
+#plt.savefig(f”data{file}.png”)
+
+fig,(Ax1) = plt.subplots()
+Ax1.plot(COUR_std_Data, label="Coursera")
+Ax1.plot(CRM_std_Data, label="Salesforce")
+Ax1.plot(AMZN_std_Data, label="Amazon")
+Ax1.plot(ADBE_std_Data, label="Adobe")
+Ax1.plot(GOOGL_std_Data, label="Google")
+Ax1.set_ylabel("Price's Standard Deviation")
+Ax1.set_xlabel("Number Of Weeks")
+Ax1.set_title("STANDARD DEVIATION OF 5 STOCK")
+plt.legend()
+plt.savefig("5 Stock's Std_Dev.png")
